@@ -4,7 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    backendbase:"http://localhost:8080"
+  },
+  getters: {
+    backendbase(state){
+      return state.backendbase
+    }
+  },
   mutations: {},
   actions: {},
   modules: {}
