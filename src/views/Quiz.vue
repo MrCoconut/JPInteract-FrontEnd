@@ -1,0 +1,44 @@
+<template>
+  <div class="about">
+    <Header :message="quizName"></Header>
+    <Question v-for="(question, num) in questions" v-bind:key="num" v-bind:question="question"></Question>
+    <button class="submit">Submit</button>
+  </div>
+</template>
+
+<style>
+.submit {
+  background-color: var(--color-brightorange);
+  width: 100%;
+  font-size: 60px;
+  padding: 15px;
+  text-align: center;
+  margin-top:20px;
+}
+</style>
+
+<script>
+import Header from "@/components/Header.vue"
+import Question from "@/components/Question.vue"
+
+export default {
+  name: "quiz",
+  data: function(){
+    return{
+      quizName: this.$route.params.name,
+      quizID: this.$route.params.quizID,
+      questions: this.$route.params.questions
+    }
+  },
+  components:{
+    Header,
+    Question
+  },
+  beforeCreate: function(){
+    //Parse String into Json Object
+    Object.keys(this.$route.params.questions).forEach((key)=>{
+      this.$route.params.questions[key] = JSON.parse(this.$route.params.questions[key]);
+    })
+  }
+};
+</script>

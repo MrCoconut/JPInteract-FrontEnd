@@ -1,17 +1,22 @@
 <template>
   <div class="home">
-    <HelloWorld/>
+    <Header message="Welcome JPInteract"></Header>
+    <Dail/>
   </div>
 </template>
 
+
+<style>
+</style>
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Dail from "@/components/Dail.vue";
+import Header from "@/components/Header.vue"
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    Dail,
+    Header
   }
 };
 </script>

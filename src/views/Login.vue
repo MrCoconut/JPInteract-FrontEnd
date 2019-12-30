@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <Header message="About"></Header>
+    <Header message="Teacher Login"></Header>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import Header from "@/components/Header.vue"
 
 export default {
-  name: "about",
+  name: "login",
   components:{
     Header
   }
