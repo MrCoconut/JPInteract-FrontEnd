@@ -1,8 +1,8 @@
 <template>
   <div class="about">
     <Header :message="quizName"></Header>
-    <Question v-for="(question, num) in questions" v-bind:key="num" v-bind:question="question"></Question>
-    <button class="submit">Submit</button>
+    <Question v-for="(question, num) in questions" v-bind:key="num" v-bind:question="question" v-bind:result="result"></Question>
+    <button class="submit" @click="send">Submit</button>
   </div>
 </template>
 
@@ -27,17 +27,35 @@ export default {
     return{
       quizName: this.$route.params.name,
       quizID: this.$route.params.quizID,
-      questions: this.$route.params.questions
+      questions: this.$route.params.questions,
+      result: {}
+    }
+  },
+  methods: {
+    send(){
+      const axios = require('axios');
+      axios.post(this.$store.getters.backendbase + "/quizSubmit?quizID=" + this.quizID, this.result).then(
+        res => {
+          if(res.data.result == 200){
+            this.$router.push({name: "success"})
+          }else{
+            alert("Server Error")
+          }
+        }
+      ).catch(err => {
+        alert(err)
+      })
     }
   },
   components:{
     Header,
     Question
   },
-  beforeCreate: function(){
+  created: function(){
     //Parse String into Json Object
     Object.keys(this.$route.params.questions).forEach((key)=>{
-      this.$route.params.questions[key] = JSON.parse(this.$route.params.questions[key]);
+      this.$route.params.questions[key] = JSON.parse(this.$route.params.questions[key])
+      this.result[key] = ''
     })
   }
 };

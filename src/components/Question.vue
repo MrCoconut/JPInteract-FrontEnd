@@ -1,14 +1,14 @@
 <template>
 <div>
-  <h2><span class="number">{{this.$vnode.key}}.</span>{{question.title}}</h2>
+  <h2><span class="number">{{number}}.</span>{{question.title}}</h2>
   <div v-if="question.type == 'MUL'">
     <label v-for="(detail, label) in question.options" v-bind:key="label">{{label}}. {{detail}}
-      <input type="radio">
+      <input type="radio" :value="label" v-model="result[number]" :name="number">
       <span class="checkmark"></span>
     </label>
   </div>
   <div v-if="question.type == 'SHT'">
-      <input type="text" placeholder="Please input your answer.">
+      <input type="text" v-model="result[number]" placeholder="Please input your answer.">
   </div>
 </div>
 </template>
@@ -123,8 +123,16 @@ label .checkmark:after {
 <script>
 export default {
   name: "Question",
+  data: function(){
+    {
+      return{
+        number: this.$vnode.key,
+      }
+    }
+  },
   props: {
-    question: Object
+    question: Object,
+    result: Object
   }
 };
 </script>
