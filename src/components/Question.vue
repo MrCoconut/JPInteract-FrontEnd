@@ -14,6 +14,11 @@
 </template>
 
 <style>
+h2{
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
 .question {
   display: block;
   margin-top: 70px;
@@ -31,10 +36,10 @@
 label {
   display: block;
   position: relative;
-  padding-left: 60px;
-  margin-bottom: 12px;
+  padding-left: 40px;
+  margin-bottom: 6px;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 1.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -42,10 +47,16 @@ label {
 }
 
 input[type="text"] {
+  font-size: 1.0625rem;
   display: block;
   transition: 1s ease-out;
   animation-name: strech;
   animation-duration: 1s;
+  height: 2rem;
+}
+
+input::placeholder{
+  font-size: 1.0625rem;
 }
 
 @keyframes strech {
@@ -77,10 +88,10 @@ input[type="radio"] {
 /* Create a custom radio button */
 .checkmark {
   position: absolute;
-  top: 14px;
+  top: 2px;
   left: 10px;
-  height: 30px;
-  width: 30px;
+  height: 1rem;
+  width: 1rem;
   background-color: #eee;
   border-radius: 50%;
   transition: background-color 0.8s ease-in-out 0s;
@@ -110,10 +121,10 @@ label input:checked~.checkmark:after {
 
 /* Style the indicator (dot/circle) */
 label .checkmark:after {
-  top: 8px;
-  left: 8px;
-  width: 14px;
-  height: 14px;
+  top: 4px;
+  left: 4px;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
   background: white;
 }

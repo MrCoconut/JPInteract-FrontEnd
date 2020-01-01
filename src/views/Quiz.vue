@@ -10,8 +10,8 @@
 .submit {
   background-color: var(--color-brightorange);
   width: 100%;
-  font-size: 60px;
-  padding: 15px;
+  font-size: 1.5rem;
+  height: 2rem;
   text-align: center;
   margin-top:20px;
 }

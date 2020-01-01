@@ -58,34 +58,33 @@ export default {
 
 <style scoped lang="scss">
 #inputarea {
-    margin-top: 70pt;
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: 1fr 120pt;
+    grid-template-columns: 1fr 5rem;
     padding: 0;
 }
 
 #dial {
-    margin-top: 70px;
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-gap: 50pt;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 70px;
+    grid-gap: 1.25rem;
+    margin-bottom: 30px;
 }
 
 #Go {
     background-color: var(--color-brightorange);
-    height: 100pt;
+    height: 60px;
+    width: 5rem;
 }
 
 .dialbtn {
-    font-size: 70pt;
+    font-size: 2rem;
     background-color: var(--color-darkpurple);
     border-radius: 100%;
-    width: 150pt;
-    height: 150pt;
+    width: 3.5rem;
+    height: 3.5rem;
     text-align: center;
     display: block;
     margin: 0 auto;
