@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <Header :message="quizName"></Header>
+    <h1>{{quizName}}</h1>
     <Question v-for="(question, num) in questions" v-bind:key="num" v-bind:question="question" v-bind:result="result"></Question>
     <button class="submit" @click="send">Submit</button>
   </div>
@@ -18,7 +18,6 @@
 </style>
 
 <script>
-import Header from "@/components/Header.vue"
 import Question from "@/components/Question.vue"
 
 export default {
@@ -48,7 +47,6 @@ export default {
     }
   },
   components:{
-    Header,
     Question
   },
   created: function(){
