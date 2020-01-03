@@ -49,10 +49,20 @@ label {
 input[type="text"] {
   font-size: 1.0625rem;
   display: block;
-  transition: 1s ease-out;
-  animation-name: strech;
-  animation-duration: 1s;
+  margin-left: 40px;
+  width:470px;
   height: 2rem;
+}
+
+@media (max-width: 767px){
+  input[type="text"]{
+    width: 250px;
+  }
+}
+@media (max-width: 320px){
+  input[type="text"]{
+    width: 200px;
+  }
 }
 
 input::placeholder{
@@ -88,23 +98,23 @@ input[type="radio"] {
 /* Create a custom radio button */
 .checkmark {
   position: absolute;
+  background-color: var(--color-darkgreen);
   top: 2px;
   left: 10px;
   height: 1rem;
   width: 1rem;
-  background-color: #eee;
   border-radius: 50%;
-  transition: background-color 0.8s ease-in-out 0s;
+  transition: background-color 100ms ease-in-out 0s;
 }
 
 /* On mouse-over, add a grey background color */
 label:hover input~.checkmark {
-  background-color: var(--color-brightorange);
+  background-color: var(--color-pink);
 }
 
 /* When the radio button is checked, add a blue background */
 label input:checked~.checkmark {
-  background-color: var(--color-brightorange);
+  background-color: var(--color-pink);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -126,7 +136,7 @@ label .checkmark:after {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: white;
+  background: var(--color-yellow);
 }
 
 </style>

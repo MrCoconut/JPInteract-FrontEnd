@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>Your answer has been sucessfully uploaded.</h1>
+  <div>
+    <h1>Your answer has been <span class="blockback">sucessfully uploaded</span>.</h1>
   </div>
 </template>
 

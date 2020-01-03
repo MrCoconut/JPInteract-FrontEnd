@@ -27,8 +27,8 @@
 @media (max-width: 700px){
   #app{
     padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 20px;
   }
 }

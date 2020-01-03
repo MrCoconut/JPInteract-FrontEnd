@@ -1,19 +1,43 @@
 <template>
-  <div class="about">
-    <h1>{{quizName}}</h1>
+  <div class="quiz">
+    <h1 class="title">{{quizName}}</h1>
     <Question v-for="(question, num) in questions" v-bind:key="num" v-bind:question="question" v-bind:result="result"></Question>
     <button class="submit" @click="send">Submit</button>
   </div>
 </template>
 
 <style>
+.title{
+  text-align: center;
+}
 .submit {
-  background-color: var(--color-brightorange);
-  width: 100%;
+  background-color: var(--color-yellow);
+  color: var(--color-navy);
+  width: 120px;
   font-size: 1.5rem;
   height: 2rem;
+  border-radius: 50px;
   text-align: center;
-  margin-top:20px;
+  display: block;
+  margin: 0 auto;
+  margin-top:40px;
+  margin-bottom:20px;
+}
+
+.quiz{
+    max-width:700px;
+    padding-top:30px;
+    padding-bottom:30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0 auto;
+    background-color: var(--color-palegreen);
+}
+
+@media (max-width: 767px){
+  .quiz{
+    padding:10px;
+  }
 }
 </style>
 

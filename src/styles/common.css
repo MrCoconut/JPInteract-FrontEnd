@@ -68,6 +68,7 @@ input::-webkit-input-placeholder {
   display: block;
   background: transparent;
   border-bottom: 3px solid var(--color-navy);
+  text-align: left;
 }
 
 input::after{
@@ -86,4 +87,6 @@ button{
 .blockback{
    background-color: var(--color-yellow);
    background-size: 50%;
+   padding-left: 10px;
+   padding-right: 10px;
 }

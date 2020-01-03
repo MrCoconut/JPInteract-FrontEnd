@@ -4,6 +4,7 @@ import Home from "@/views/Home.vue";
 import Quiz from "@/views/Quiz.vue";
 import About from "@/views/About.vue";
 import Success from "@/views/PostSuccess.vue";
+import Teacher from "@/views/Teacher.vue"
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/success",
     name: "success",
     component: Success
+  },
+  {
+    path: "/teacher",
+    name: "teacher",
+    component: Teacher
   }
 ];
 
