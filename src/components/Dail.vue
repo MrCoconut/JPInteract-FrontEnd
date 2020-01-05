@@ -35,24 +35,9 @@ export default {
       this.quizID += value
     },
     send() {
-      const axios = require('axios');
-      axios.get(this.$store.getters.backendbase + "/quiz?quizID=" + this.quizID).then(
-        res => {
-          if(res.data.result == 404){
-            alert("No Quiz Matched")
-          }else if(res.data.result == 200){
-            this.$router.push({name: "quiz", params:{
-              name: res.data.name,
-              quizID: res.data.quizID,
-              questions: res.data.questions
-            }})
-          }else{
-            alert("Invalid Input")
-          }
-        }
-      ).catch(err => {
-        alert(err)
-      })
+      this.$router.push({name: "quiz", params:{
+        quizID: this.quizID,
+      }})
     }
   }
 };

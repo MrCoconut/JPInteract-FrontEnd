@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    backendbase:"http://161.23.237.17:8080"
+    backendbase:"http://localhost:8080"
   },
   getters: {
     backendbase(state){

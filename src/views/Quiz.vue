@@ -48,13 +48,35 @@ export default {
   name: "quiz",
   data: function(){
     return{
-      quizName: this.$route.params.name,
+      quizName: '',
       quizID: this.$route.params.quizID,
-      questions: this.$route.params.questions,
+      questions: {},
       result: {}
     }
   },
   methods: {
+    fetch(){
+      const axios = require('axios');
+      axios.get(this.$store.getters.backendbase + "/quiz?quizID=" + this.quizID).then(
+        res => {
+          if(res.data.result == 404){
+            alert("No Quiz Matched")
+            this.$router.push({name: "home"})
+          }else if(res.data.result == 200){
+            this.quizName= res.data.name,
+            Object.keys(res.data.questions).forEach((key)=>{
+              this.questions[key] = JSON.parse(res.data.questions[key])
+              this.result[key] = ''
+            })
+          }else{
+            alert("Invalid Input")
+            this.$router.push({name: "home"})
+          }
+        }
+      ).catch(err => {
+        alert(err)
+      })
+    },
     send(){
       const axios = require('axios');
       axios.post(this.$store.getters.backendbase + "/quizSubmit?quizID=" + this.quizID, this.result).then(
@@ -74,11 +96,8 @@ export default {
     Question
   },
   created: function(){
+    this.fetch()
     //Parse String into Json Object
-    Object.keys(this.$route.params.questions).forEach((key)=>{
-      this.$route.params.questions[key] = JSON.parse(this.$route.params.questions[key])
-      this.result[key] = ''
-    })
   }
 };
 </script>
