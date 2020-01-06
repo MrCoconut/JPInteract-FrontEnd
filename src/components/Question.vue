@@ -8,7 +8,7 @@
     </label>
   </div>
   <div v-if="question.type == 'SHT'">
-      <input type="text" v-model="result[number]" placeholder="Please input your answer.">
+      <input class="inputStudent" type="text" v-model="result[number]" placeholder="Please input your answer.">
   </div>
 </div>
 </template>
@@ -46,21 +46,20 @@ label {
   user-select: none;
 }
 
-input[type="text"] {
+.inputStudent {
   font-size: 1.0625rem;
-  display: block;
   margin-left: 40px;
   width:470px;
   height: 2rem;
 }
 
 @media (max-width: 767px){
-  input[type="text"]{
+  .inputStudent{
     width: 250px;
   }
 }
 @media (max-width: 320px){
-  input[type="text"]{
+  .inputStudent{
     width: 200px;
   }
 }
