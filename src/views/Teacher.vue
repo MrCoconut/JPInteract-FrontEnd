@@ -17,7 +17,7 @@
         <button class="createQuestion" @click="addMUL()">+ Multi-Choice</button>
         <button class="createQuestion" @click="addSHT()">+ Short Answer</button>
       </div>
-      <button class="createQuestion" @click="addSHT()">Save!</button>
+      <button class="createQuestion" @click="send()">Save!</button>
       </div>
     </div>
     <div id="grid-teacher">
@@ -191,26 +191,29 @@ export default {
     }
   },
   created: function(){
-    const axios = require('axios');
-    axios.get(this.$store.getters.backendbase + "/quizRetrieve?name=" + this.name).then(
-      res => {
-        this.quizzes = res.data;
-        Object.keys(this.quizzes).forEach((num)=>{
-          Object.keys(this.quizzes[num].questions).forEach((key)=>{
-          this.quizzes[num].questions[key] = JSON.parse(this.quizzes[num].questions[key])
-        })
-      });
-        this.fetched = true;
-      }
-    ).catch(err => {
-      alert(err)
-    })
+    this.fetch()
   },
   components:{
     QuizCard,
     QuestionResult
   },
   methods:{
+    fetch(){
+      const axios = require('axios');
+      axios.get(this.$store.getters.backendbase + "/quizRetrieve?name=" + this.name).then(
+        res => {
+          this.quizzes = res.data;
+          Object.keys(this.quizzes).forEach((num)=>{
+            Object.keys(this.quizzes[num].questions).forEach((key)=>{
+            this.quizzes[num].questions[key] = JSON.parse(this.quizzes[num].questions[key])
+          })
+        });
+          this.fetched = true;
+        }
+      ).catch(err => {
+        alert(err)
+      })
+    },
     show: function(number){
       this.number = number
     },
@@ -220,7 +223,7 @@ export default {
     },
     addMUL: function(){
       this.$set(this.questions, this.quizCount, {
-        name:"MUL",
+        title:"",
         type:"MUL",
         options:{
           A:"",
@@ -233,16 +236,36 @@ export default {
     },
     addSHT: function(){
       this.$set(this.questions, this.quizCount, {
-        name:"SHT",
+        title:"",
         type:"SHT"
       })
       this.quizCount += 1
     },
-    exit: function(){
+    exit(){
       this.create=false
       this.quizCount=1
       this.newquiz=""
       this.questions={}
+    },
+    send: function(){
+      const axios = require('axios');
+      axios.put(this.$store.getters.backendbase + "/quiz",{
+        name: this.newquiz,
+        questions: this.questions,
+        teacher: this.name
+      }).then(
+        res => {
+          if(res.data.result == 200){
+            alert("Success")
+          }else{
+            alert("Error")
+          }
+          this.exit();
+          this.fetch();
+        }
+      ).catch(err => {
+        alert(err)
+      })
     }
   }
 };
