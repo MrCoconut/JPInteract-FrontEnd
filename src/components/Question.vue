@@ -1,20 +1,33 @@
 <template>
-<div>
-  <h2><span class="number">{{number}}.</span>{{question.title}}</h2>
-  <div v-if="question.type == 'MUL'">
-    <label v-for="(detail, label) in question.options" v-bind:key="label">{{label}}. {{detail}}
-      <input type="radio" :value="label" v-model="result[number]" :name="number">
-      <span class="checkmark"></span>
-    </label>
+  <div>
+    <h2>
+      <span class="number">{{ number }}.</span>{{ question.title }}
+    </h2>
+    <div v-if="question.type == 'MUL'">
+      <label v-for="(detail, label) in question.options" v-bind:key="label"
+        >{{ label }}. {{ detail }}
+        <input
+          type="radio"
+          :value="label"
+          v-model="result[number]"
+          :name="number"
+        />
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div v-if="question.type == 'SHT'">
+      <input
+        class="inputStudent"
+        type="text"
+        v-model="result[number]"
+        placeholder="Please input your answer."
+      />
+    </div>
   </div>
-  <div v-if="question.type == 'SHT'">
-      <input class="inputStudent" type="text" v-model="result[number]" placeholder="Please input your answer.">
-  </div>
-</div>
 </template>
 
 <style>
-h2{
+h2 {
   margin-top: 30px;
   margin-bottom: 10px;
 }
@@ -49,23 +62,24 @@ label {
 .inputStudent {
   font-size: 1.0625rem;
   margin-left: 40px;
-  width:470px;
+  width: 470px;
   height: 2rem;
 }
 
-@media (max-width: 767px){
-  .inputStudent{
+@media (max-width: 767px) {
+  .inputStudent {
     width: 250px;
   }
 }
-@media (max-width: 320px){
-  .inputStudent{
+@media (max-width: 320px) {
+  .inputStudent {
     width: 200px;
   }
 }
 
-input::placeholder{
+input::placeholder {
   font-size: 1.0625rem;
+  border: none;
 }
 
 @keyframes strech {
@@ -75,7 +89,7 @@ input::placeholder{
     -webkit-text-fill-color: rgba(0, 0, 0, 0);
   }
 
-  80%{
+  80% {
     color: rgba(0, 0, 0, 0);
     -webkit-text-fill-color: rgba(0, 0, 0, 0);
   }
@@ -107,12 +121,12 @@ input[type="radio"] {
 }
 
 /* On mouse-over, add a grey background color */
-label:hover input~.checkmark {
+label:hover input ~ .checkmark {
   background-color: var(--color-pink);
 }
 
 /* When the radio button is checked, add a blue background */
-label input:checked~.checkmark {
+label input:checked ~ .checkmark {
   background-color: var(--color-pink);
 }
 
@@ -124,7 +138,7 @@ label input:checked~.checkmark {
 }
 
 /* Show the indicator (dot/circle) when checked */
-label input:checked~.checkmark:after {
+label input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -137,17 +151,16 @@ label .checkmark:after {
   border-radius: 50%;
   background: var(--color-yellow);
 }
-
 </style>
 
 <script>
 export default {
   name: "Question",
-  data: function(){
+  data: function() {
     {
-      return{
-        number: this.$vnode.key,
-      }
+      return {
+        number: this.$vnode.key
+      };
     }
   },
   props: {
